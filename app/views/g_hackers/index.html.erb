@@ -1,0 +1,28 @@
+<% @title = @active = "Hackers" %>
+
+<div class="container">
+  <%= paginate @hackers %>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 panel">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th style="width: 4em;">#</th>
+            <th style="width: 15em;">Name</th>
+            <th>Moto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @hackers.each_with_index do |hacker, index| %>
+            <tr>
+              <td><%= index %></td>
+              <td><%= link_to hacker.name, hacker_path(hacker), target: "_blank" %></td>
+              <td>This needs to be done.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <h2 class="form-heading">Sign in</h2>
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email Address", required: true %>
+          <%= f.password_field :password, class: "form-control signin-password", placeholder: "Password", required: true %>
+          <% if devise_mapping.rememberable? -%>
+            <div class="checkbox"><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+          <% end -%>
+          <div><%= f.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %></div>
+        <% end %>
+        <div class="new_hacker">
+          <div class="shared-links">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

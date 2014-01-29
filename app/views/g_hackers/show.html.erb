@@ -1,0 +1,44 @@
+<% @title = "Hacker: #{@hacker.name}" %>
+<% @active = "Hackers" %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 panel">
+      <h2 class="page-header"><%= "#{@hacker.name}" %> <small><%= "#{@hacker.email}" %></small></h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Solved</th>
+            <th>Submit</th>
+            <th>AC</th>
+            <th>WA</th>
+            <th>TLE</th>
+            <th>MLE</th>
+            <th>OLE</th>
+            <th>RE</th>
+            <th>CE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if false %>
+          <tr>
+            <td><%= link_to @solved.size, solutions_path( hacker_id: @hacker.id, result: "Accepted" ), target: "_blank" %></td>
+            <td><%= link_to @hacker.solutions.size, solutions_path( hacker_id: @hacker.id ), target: "_blank" %></td>
+            <% [
+                    "Accepted",
+                    "Wrong_Answer",
+                    "Time_Limit_Exceeded",
+                    "Memory_Limit_Exceeded",
+                    "Output_Limit_Exceeded",
+                    "Runtime_Error",
+                    "Compile_Error"
+               ].each do |result| %>
+              <td><%= link_to @hacker.solutions.select { |x| x.result == result }.size, solutions_path( hacker_id: @hacker.id, result: result), target: "_blank" %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

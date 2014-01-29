@@ -1,0 +1,67 @@
+<% @title = "Puzzle #{@puzzle.id}: #{@puzzle.title}" %>
+<% if @contest.default %>
+  <% @active = "Practice" %>
+<% else %>
+  <% @active = "Contests" %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 panel-info">
+      <h2><b>Puzzle <%= @puzzle.id %>. <%= @puzzle.title %></b></h2>
+      <p>Time Limit: <%= @puzzle.time_limit %> MS&nbsp;&nbsp;&nbsp;Memory Limit: <%= @puzzle.memory_limit %> MB</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <% ["description", "input_format", "output_format", "sample_input", "sample_output", "hint"].each do |msg| %>
+        <div id="<%= msg %>">
+          <div class="panel">
+            <h3 class="page-header"><%= msg.split('_').map { |x| x[0].upcase + x[1..-1] }.join(' ') %></h3>
+            <%= @puzzle.send("rendered_#{msg}").html_safe %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-3 col-md-offset-1">
+      <div id="sidebar">
+        <ul class="nav nav-stacked sidenav">
+          <% ["description", "input_format", "output_format", "sample_input", "sample_output", "hint"].each do |msg| %>
+            <li><a href="#<%= msg %>"><%= msg.split('_').map { |x| x[0].upcase + x[1..-1] }.join(' ') %></a></li>
+          <% end %>
+          <li style="text-align: center; margin-top: 10px;">
+            <div class="btn-group btn-group-md">
+              <%= link_to "Submit", contest_new_solution_path( id: @contest.id, puzzle_id: @puzzle.id ), class: "btn btn-success", target: "_blank" %>
+              <%= link_to "Status", contest_solutions_path( id: @contest.id, puzzle_id: @puzzle.id ), class: "btn btn-info", target: "_blank" %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+      var $sidebar = $("#sidebar"),
+          $window = $(window),
+          offset = $sidebar.offset(),
+          topPadding = 90;
+      $window.scroll(function() {
+          if ($window.scrollTop() > offset.top - 40) {
+              $sidebar.stop().animate({
+                  marginTop: $window.scrollTop() - offset.top + topPadding
+              });
+          }
+          else {
+              $sidebar.stop().animate({
+                  marginTop: 30
+              });
+          }
+      });
+  });
+</script>

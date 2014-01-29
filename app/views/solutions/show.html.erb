@@ -1,0 +1,28 @@
+<% @title = "Solution ##{@solution.id}" %>
+<% if @contest.default %>
+  <% @active = "Practice" %>
+<% else %>
+  <% @active = "Contests" %>
+<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 panel-info">
+      <h2 class="page-header">View Solution</h2>
+      <div style="font-size: 90%">
+        <p>Puzzle: <%= link_to "#{@solution.puzzle_id} ( #{@solution.puzzle.title} )", contest_puzzle_path(@contest, @solution.puzzle), target: "_blank" %>
+        &nbsp;&nbsp;&nbsp;Judge Status: <span id="<%= @solution.result %>"><strong><%= @solution.result.gsub('_', ' ') %></strong></span></p>
+        <p>Solution ID: <%= @solution.id %>
+        &nbsp;&nbsp;&nbsp;Language: <%= @solution.language %>
+        &nbsp;&nbsp;&nbsp;Hacker: <%= @solution.hacker.name %></p>
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2 panel" style="padding-top: 20px; margin-top: 10px">
+      <%= @solution.rendered_code.html_safe %>
+    </div>
+    <div class="col-md-8 col-md-offset-2 panel" style="margin-top: -10px; padding-top: -20px;">
+      <h4 class="page-header"><b>Compile Info</b></h4>
+      <%= @solution.rendered_compile_info.html_safe %>
+    </div>
+  </div>
+</div>

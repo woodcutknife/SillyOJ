@@ -1,0 +1,44 @@
+.edit_hacker {
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.edit_hacker .form-heading {
+  margin-bottom: 10px;
+}
+
+.edit_hacker .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.edit_hacker .form-control:focus {
+  z-index: 2;
+}
+
+.edit_hacker input[type="email"],
+.edit_hacker input[class="form-control update-password"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.edit_hacker input[type="text"],
+.edit_hacker input[class="form-control update-password-confirmation"] {
+  margin-bottom: 25px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.edit_hacker input[class="form-control update-current-password"] {
+  margin-bottom: 10px;
+}
+
+.edit_hacker .links {
+  font-size: 120%;
+}

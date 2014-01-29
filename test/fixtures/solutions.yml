@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyText
+  rendered_code: MyText
+  language: MyString
+  time_cost: 1
+  memory_cost: 1
+  result: MyString
+  hacker_id: 
+  puzzle_id: 
+
+two:
+  code: MyText
+  rendered_code: MyText
+  language: MyString
+  time_cost: 1
+  memory_cost: 1
+  result: MyString
+  hacker_id: 
+  puzzle_id: 

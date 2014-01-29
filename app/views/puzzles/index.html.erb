@@ -1,0 +1,38 @@
+<% @title = "Problems" %>
+<% if @contest.default %>
+  <% @active = "Practice" %>
+<% else %>
+  <% @active = "Contests" %>
+<% end %>
+
+<div class="container">
+  <%= render "shared/heading" %>
+  <%= paginate @puzzles %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th style="width: 4em;">#</th>
+              <th>Title</th>
+              <th style="width: 5em;">&nbsp;</th>
+              <th style="width: 8em;">Solved</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @puzzles.each do |puzzle| %>
+              <tr>
+                <td><%= link_to puzzle.id, contest_puzzle_path(@contest, puzzle), target: "_blank" %></td>
+                <td><%= link_to puzzle.title, contest_puzzle_path(@contest, puzzle), target: "_blank" %></td>
+                <td>&nbsp;</td>
+                <td><%= link_to puzzle.solutions.select { |x| x.result == "Accepted" and x.contest_id == @contest.id }.map { |x| x.hacker_id }.uniq.size, contest_solutions_path( id: @contest.id, puzzle_id: puzzle.id, result: "Accepted" ), target: "_blank" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

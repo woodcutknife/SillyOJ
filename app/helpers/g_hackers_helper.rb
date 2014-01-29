@@ -1,0 +1,2 @@
+module GHackersHelper
+end

@@ -1,0 +1,18 @@
+<div class="row">
+  <% unless @contest.default %>
+    <div class="col-md-6 col-md-offset-3 panel-info">
+      <h2><b><%= @contest.name %></b></h2>
+      <p><small>Start Time: <%= @contest.start_time or "None" %></small></p>
+      <p style="margin-top: -15px;"><small>End Time: <%= @contest.end_time or "None" %></small></p>
+    </div>
+  <% end %>
+  <div style="text-align: center; opacity: 0.7; margin-top: 15px;">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="btn-group btn-group-md">
+        <%= link_to "Problems", contest_puzzles_path(@contest), class: "btn btn-success" %>
+        <%= link_to "Status", contest_solutions_path(@contest), class: "btn btn-info" %>
+        <%= link_to "Ranklist", contest_hackers_path(@contest), class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
+</div>

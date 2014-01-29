@@ -1,0 +1,44 @@
+<% @title = @active = "Contests" %>
+
+<div class="container">
+  <%= paginate @contests %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th style="width: 4em;">#</th>
+              <th>Name</th>
+              <th style="width: 18em;">Start Time</th>
+              <th style="width: 18em;">End Time</th>
+              <th style="width: 12em;">&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @contests.each do |contest| %>
+              <% unless contest.default %>
+                <tr>
+                  <td><%= contest.id %></td>
+                  <td><%= link_to contest.name, contest_puzzles_path(contest.id) %></td>
+                  <td><%= contest.start_time %></td>
+                  <td><%= contest.end_time %></td>
+                  <% if contest.ended %>
+                    <td>Ended</td>
+                  <% elsif contest.started %>
+                    <td>Started</td>
+                  <% elsif current_hacker and current_hacker.contests.member? contest %>
+                    <td>Registered</td>
+                  <% else contest.ended %>
+                    <td><%= link_to 'Register', contest_register_path(contest.id) %></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

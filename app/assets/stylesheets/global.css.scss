@@ -1,0 +1,36 @@
+body {
+  padding-top: 60px;
+  background: #413f3b url(image-path("bg.jpg"));
+}
+
+.panel {
+  margin-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  background-image: url(image-path("white_wall_hash.jpg"));
+  margin-bottom: 40px;
+  -webkit-box-shadow: 0px 2px 7px 2px rgba(0, 0, 0, 0.4), 0px 10px 20px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow:    0px 2px 7px 2px rgba(0, 0, 0, 0.4), 0px 10px 20px 8px rgba(0, 0, 0, 0.3);
+  -ms-box-shadow:     0px 2px 7px 2px rgba(0, 0, 0, 0.4), 0px 10px 20px 8px rgba(0, 0, 0, 0.3);
+  -o-box-shadow:      0px 2px 7px 2px rgba(0, 0, 0, 0.4), 0px 10px 20px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
+}
+
+.my-pagination {
+  max-width: 360px;
+  margin: 0 auto;
+  margin-bottom: -35px;
+  text-align: center;
+}
+
+.nav-href:hover {
+  -webkit-transform: translateY(-4px);
+  -moz-transform: translateY(-4px);
+  transform: translateY(-4px);
+}
+
+.nav-href {
+  -webkit-transition: 200ms;
+  -moz-transition: 200ms;
+}

@@ -1,0 +1,59 @@
+.new_hacker {
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.new_hacker .form-heading,
+.new_hacker .checkbox {
+  margin-bottom: 10px;
+}
+
+.new_hacker .checkbox {
+  font-weight: normal;
+}
+
+.new_hacker .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.new_hacker .form-control:focus {
+  z-index: 2;
+}
+
+.new_hacker input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.new_hacker input[type="text"],
+.new_hacker input[class="form-control signup-password"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.new_hacker input[class="form-control signin-password"],
+.new_hacker input[class="form-control signup-password-confirmation"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.new_hacker .shared-links {
+  font-size: 120%;
+  margin-top: -10px;
+}
+
+.new_hacker input[class="form-control only-email"] {
+  margin-bottom: 10px;
+  border-radius: 4px;
+}

@@ -1,0 +1,48 @@
+<% @title = "Status" %>
+<% if @contest.default %>
+  <% @active = "Practice" %>
+<% else %>
+  <% @active = "Contests" %>
+<% end %>
+
+<div class="container">
+  <%= render "shared/heading" %>
+  <%= paginate @solutions %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th style="width: 4em;">#</th>
+              <th style="width: 8em;">Hacker</th>
+              <th style="width: 18em;">Puzzle</th>
+              <th style="width: 14em;">Result</th>
+              <th style="width: 6em;">Memory</th>
+              <th style="width: 6em;">Time</th>
+              <th style="width: 4em;">Lang</th>
+              <th style="width: 6em">Code</th>
+              <th>Submit Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @solutions.each do |solution| %>
+              <tr>
+                <td><%= solution.id %></td>
+                <td><%= link_to solution.hacker.name, hacker_path(solution.hacker), target: "_blank" %></td>
+                <td><%= link_to solution.puzzle.title, contest_puzzle_path(@contest, solution.puzzle), target: "_blank" %></td>
+                <td><span id="<%= solution.result %>"><strong><%= solution.result.gsub('_', ' ') %></strong></span></td>
+                <td><%= solution.memory_cost %> kb</td>
+                <td><%= solution.time_cost %> ms</td>
+                <td><%= solution.language %></td>
+                <td><%= link_to "#{solution.code.size} B", contest_solution_path(@contest, solution), target: "_blank" %></td>
+                <td><%= solution.created_at.to_s.split(' ').take(2).join(' ') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

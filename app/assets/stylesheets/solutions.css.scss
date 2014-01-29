@@ -1,0 +1,43 @@
+// Place all the styles related to the solutions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#Accepted {
+  color: limegreen;
+}
+
+#Wrong_Answer {
+  color: red;
+}
+
+#Time_Limit_Exceeded {
+  color: mediumpurple;
+}
+
+#Compile_Error {
+  color: deepskyblue;
+}
+
+#Runtime_Error {
+  color: orangered;
+}
+
+#Pending {
+  color: black;
+}
+
+#Waiting {
+  color: grey;
+}
+
+#Running {
+  color: mediumpurple;
+}
+
+#Memory_Limit_Exceeded {
+  color: firebrick;
+}
+
+#Output_Limit_Exceeded {
+  color: hotpink;
+}
