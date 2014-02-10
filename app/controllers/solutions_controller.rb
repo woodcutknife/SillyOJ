@@ -56,7 +56,7 @@ class SolutionsController < ApplicationController
     @solution.hacker.save
 
     if Puzzle.where(id: @solution.puzzle_id).size == 1 && @solution.save
-      if @contest.end_time
+      if @contest.end_time and @contest.mode == 'OI'
         snds = @contest.end_time.to_i - Time.now.to_i
         snds = 1 if snds < 1
         @solution.delay(run_at: snds.from_now).judge
