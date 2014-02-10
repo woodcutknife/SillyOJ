@@ -5,28 +5,11 @@ class Contest < ActiveRecord::Base
 
   validates :name, presence: true
 
-  after_create :set_time
-
-  protected
-
-  def set_time
-    if start_time
-      snds = start_time.to_i - Time.now.to_i
-      self.delay(run_at: snds.from_now).set_start
-    end
-    if end_time
-      snds = end_time.to_i - Time.now.to_i
-      self.delay(run_at: snds.from_now).set_end
-    end
+  def started
+    (self.start_time == nil) or (DateTime.now >= self.start_time)
   end
 
-  def set_start
-    self.started = true
-    self.save
-  end
-
-  def set_end
-    self.ended = true
-    self.save
+  def ended
+    (self.end_time != nil) and (DateTime.now > self.end_time)
   end
 end
