@@ -9,7 +9,7 @@
   <%= render "shared/heading" %>
   <%= paginate @hackers %>
 
-  <% if @contest.mode == "oi" %>
+  <% if @contest.mode == "OI" %>
   <div class="row">
     <div class="col-md-8 col-md-offset-2 panel">
       <table class="table table-hover">
@@ -29,14 +29,14 @@
               <td><%= link_to hacker.name, hacker_path(hacker), target: "_blank" %></td>
               <td><%= hacker.email %></td>
               <td><%= @score[hacker.id] %></td>
-              <td><%= link_to @ac_cnt[hacker.id], contest_solutions_path( @contest, hacker_id: hacker.id, result: "100" ), target: "_blank" %></td>
+              <td><%= link_to @ac_cnt[hacker.id], contest_solutions_path( @contest, hacker_id: hacker.id, result: "100.0" ), target: "_blank" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
-  <% elsif @contest.mode == "oj" %>
+  <% elsif @contest.mode == "ACM" %>
   <div class="row">
     <div class="col-md-8 col-md-offset-2 panel">
       <table class="table table-hover">

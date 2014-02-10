@@ -38,7 +38,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @solution.test_results.each_with_index do |test_result, i| %>
+            <% @solution.test_results.sort_by { |x| x.id }.each_with_index do |test_result, i| %>
               <tr>
                 <td><%= i %></td>
                 <td><span id="<%= test_result.result %>"><strong><%= test_result.result.gsub('_', ' ') %></strong></span></td>
