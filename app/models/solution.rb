@@ -60,7 +60,10 @@ class Solution < ActiveRecord::Base
     redcarpet = Redcarpet::Markdown.new(renderer, extensions)
 
     self.rendered_code = redcarpet.render "~~~ #{self.language.downcase}\n#{self.code}\n~~~"
-    self.rendered_compile_info = redcarpet.render "~~~ bash\n#{self.compile_info}\n~~~"
+
+    renderer = Redcarpet::Render::HTML.new
+    redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+    self.rendered_compile_info = redcarpet.render "~~~\n#{self.compile_info}\n~~~"
   end
 end
 
