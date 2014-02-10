@@ -3,6 +3,8 @@ class Solution < ActiveRecord::Base
   belongs_to :puzzle
   belongs_to :contest
 
+  has_many :test_results, dependent: :destroy
+
   validates :language, presence: true,
                        inclusion: { in: [ 'C', 'C++', 'Pascal' ] }
   validates :code, presence: true,
@@ -39,6 +41,19 @@ class Solution < ActiveRecord::Base
         self.time_cost = judge_result[1].to_i
         self.memory_cost = judge_result[2].to_i
         self.compile_info = judge_result[-1].join("\n")
+
+        if mode == 'OI'
+          judge_result[3].each do |log|
+            test_result = TestResult.new
+            test_result.result = log[:result]
+            test_result.score = log[:score]
+            test_result.time_cost = log[:time]
+            test_result.memory_cost = log[:memory]
+            test_result.log = log[:checker_log]
+            test_result.solution = self
+            test_result.save
+          end
+        end
 
         self.save
 

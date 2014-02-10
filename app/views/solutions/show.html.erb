@@ -24,5 +24,32 @@
       <h4 class="page-header"><b>Compile Info</b></h4>
       <%= @solution.rendered_compile_info.html_safe %>
     </div>
+    <% if @solution.contest.mode == 'OI' %>
+      <div class="col-md-8 col-md-offset-2 panel" style="margin-top: -10px; padding-top: -20px;">
+        <h4 class="page-header"><b>Judge Result</b></h4>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Result</th>
+              <th>Time</th>
+              <th>Memory</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @solution.test_results.each_with_index do |test_result, i| %>
+              <tr>
+                <td><%= i %></td>
+                <td><span id="<%= test_result.result %>"><strong><%= test_result.result.gsub('_', ' ') %></strong></span></td>
+                <td><%= test_result.time_cost %> ms</td>
+                <td><%= test_result.memory_cost %> kb</td>
+                <td><%= test_result.score %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
   </div>
 </div>
